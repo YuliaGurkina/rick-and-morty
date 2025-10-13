@@ -1,7 +1,11 @@
 import { NavLink, Outlet } from 'react-router-dom';
 import { publicRoute } from '../constants/PublicRoute';
+import { AuthStatus } from '../components';
+import { useAuth } from '../context/AuthProvider';
 
 export const CategoriesLayout = () => {
+	const auth = useAuth();
+
 	return (
 		<div className="container">
 			<ul className="menu">
@@ -21,6 +25,15 @@ export const CategoriesLayout = () => {
 				</li>
 				<li>
 					<NavLink to={publicRoute.episodes}>Эпизоды</NavLink>
+				</li>
+				{!auth.user && (
+					<li>
+						<NavLink to={publicRoute.login}>Войти</NavLink>
+					</li>
+				)}
+				<hr />
+				<li>
+					<AuthStatus />
 				</li>
 			</ul>
 
