@@ -65,35 +65,6 @@ button:focus-visible {
 	}
 }
 
-.container {
-	max-width: 1200px;
-	padding: 20px 50px;
-	margin: 0 auto;
-}
-
-.menu {
-	display: flex;
-	margin: 0;
-	padding: 0;
-}
-
-.menu li {
-	list-style: none;
-}
-
-.menu li + li {
-	margin-left: 15px;
-}
-
-.menu a {
-	font-size: 20px;
-	color: #999999;
-}
-
-.menu a.active {
-	color: #55bd00;
-}
-
 .loader {
 	position: fixed;
 	top: 50%;
@@ -116,66 +87,6 @@ button:focus-visible {
 	}
 }
 
-.items-wrapper {
-	display: flex;
-	flex-wrap: wrap;
-}
-
-.item {
-	width: 200px;
-	margin: 0 20px 30px;
-	background-color: #213547;
-	padding: 10px;
-	border-radius: 4px;
-}
-
-.item-image img {
-	max-width: 100%;
-}
-
-.item-name {
-	margin: 0 0 10px;
-}
-
-.item-subtitle {
-	margin: 0 0 10px;
-}
-
-.article {
-	display: flex;
-}
-
-.article-image {
-	max-width: 400px;
-	margin-right: 30px;
-	margin-top: 30px;
-}
-
-.signin-form {
-	max-width: 500px;
-	margin: 40px auto;
-	display: flex;
-	flex-direction: column;
-
-	label {
-		margin-bottom: 25px;
-	}
-
-	input {
-		display: block;
-		width: 100%;
-		height: 32px;
-		font-size: 20px;
-	}
-}
-
-.auth-info {
-	margin: 0;
-	display: flex;
-	align-items: center;
-
-	.button {
-		margin-left: 10px;
-		background: #444;
-	}
+.button {
+	background: #444;
 }

@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import styles from './Article.module.css';
 
 export const Article = () => {
 	const location = useLocation();
+	const navigate = useNavigate();
 	const pathname = location.pathname;
 	const parts = pathname.split('/');
 
@@ -12,7 +14,7 @@ export const Article = () => {
 	useEffect(() => {
 		setIsLoading(true);
 
-		fetch(`http://localhost:3000/${parts[1]}?id=${parts[2]}`)
+		fetch(`https://rickandmortyapi.com/api/${parts[2]}/${parts[3]}`)
 			.then((res) => {
 				if (res.ok) {
 					return res;
@@ -27,7 +29,7 @@ export const Article = () => {
 			})
 			.then((loadedArticle) => loadedArticle.json())
 			.then((loadedArticle) => {
-				setArticle(loadedArticle[0]);
+				setArticle(loadedArticle);
 			})
 			.finally(() => setIsLoading(false));
 	}, []);
@@ -44,9 +46,9 @@ export const Article = () => {
 		image,
 		created,
 		type,
-		dimension,
+		// dimension,
 		air_date,
-		episode,
+		// episode,
 	} = article;
 
 	return (
@@ -54,20 +56,25 @@ export const Article = () => {
 			{isLoading ? (
 				<div className="loader"></div>
 			) : (
-				<div className="article">
-					<div className="article-image">
+				<div className={styles.article}>
+					<div className={styles.articleImage}>
 						<img src={image} alt={name} />
 					</div>
 					<div>
+						<div>
+							<button className="button" onClick={() => navigate(-1)}>
+								{'<-'} Назад
+							</button>
+						</div>
 						{!!name && <h2>{name}</h2>}
 						{!!status && <p>Status: {status}</p>}
 						{!!species && <p>Species: {species}</p>}
 						{!!gender && <p>Gender: {gender}</p>}
 						{!!created && <p>Created: {created}</p>}
 						{!!type && <p>Type: {type}</p>}
-						{!!dimension && <p>Dimension: {dimension}</p>}
-						{!!air_date && <p>Dimension: {air_date}</p>}
-						{!!episode && <p>Dimension: {episode}</p>}
+						{/* {!!dimension && <p>Dimension: {dimension}</p>} */}
+						{!!air_date && <p>Air date: {air_date}</p>}
+						{/* {!!episode && <p>Episode: {episode}</p>} */}
 					</div>
 				</div>
 			)}

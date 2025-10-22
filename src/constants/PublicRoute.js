@@ -1,7 +1,8 @@
 export const publicRoute = {
 	main: '/',
-	characters: '/characters',
-	locations: '/locations',
-	episodes: '/episodes',
+	categories: '/categories',
+	characters: '/character',
+	locations: '/location',
+	episodes: '/episode',
 	login: '/login',
 };

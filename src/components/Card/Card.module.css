@@ -1,0 +1,19 @@
+.card {
+	flex: 0 0 calc(25% - 30px);
+	margin: 0 0 30px;
+	background-color: #213547;
+	padding: 10px;
+	border-radius: 4px;
+}
+
+.cardImage img {
+	max-width: 100%;
+}
+
+.cardName {
+	margin: 0 0 10px;
+}
+
+.cardSubtitle {
+	margin: 0 0 10px;
+}

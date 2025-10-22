@@ -1,67 +1,74 @@
+import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { Categories, Article, Main, NotFound, Login } from './pages';
-import { CategoriesLayout } from './layouts/CategoriesLayout';
-import './App.css';
-import { publicRoute } from './constants/PublicRoute';
+import { MainLayout } from './layouts/MainLayout/MainLayout';
+import { CategoriesLayout } from './layouts/CategoriesLayout/CategoriesLayout';
+import { publicRoute } from './constants';
 import { AuthProvider } from './context/AuthProvider';
 import { PrivateRoute } from './components';
+import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
+import './App.css';
+
+const Login = lazy(() =>
+	import('./pages/Login/Login').then((module) => ({
+		default: module.Login,
+	})),
+);
+
+const Main = lazy(() =>
+	import('./pages/Main/Main').then((module) => ({
+		default: module.Main,
+	})),
+);
+
+const Categories = lazy(() =>
+	import('./pages/Categories/Categories').then((module) => ({
+		default: module.Categories,
+	})),
+);
+
+const Category = lazy(() =>
+	import('./pages/Category/Category').then((module) => ({
+		default: module.Category,
+	})),
+);
+
+const Article = lazy(() =>
+	import('./pages/Article/Article').then((module) => ({
+		default: module.Article,
+	})),
+);
+
+const NotFound = lazy(() =>
+	import('./pages/NotFound/NotFound').then((module) => ({
+		default: module.NotFound,
+	})),
+);
 
 export const App = () => {
 	return (
 		<AuthProvider>
 			<Routes>
-				<Route element={<CategoriesLayout />}>
-					<Route path={publicRoute.main} element={<Main />} />
-					<Route path={publicRoute.characters}>
+				<Route element={<MainLayout />}>
+					<Route path="/" element={<Main />} />
+					<Route path={publicRoute.categories} element={<CategoriesLayout />}>
+						<Route index element={<Categories />} />
 						<Route
-							index
+							path=":category"
 							element={
 								<PrivateRoute>
-									<Categories />
+									<ErrorBoundary>
+										<Category />
+									</ErrorBoundary>
 								</PrivateRoute>
 							}
 						/>
 						<Route
-							path=":id"
+							path=":category/:id"
 							element={
 								<PrivateRoute>
-									<Article />
-								</PrivateRoute>
-							}
-						/>
-					</Route>
-					<Route path={publicRoute.locations}>
-						<Route
-							index
-							element={
-								<PrivateRoute>
-									<Categories />
-								</PrivateRoute>
-							}
-						/>
-						<Route
-							path=":id"
-							element={
-								<PrivateRoute>
-									<Article />
-								</PrivateRoute>
-							}
-						/>
-					</Route>
-					<Route path={publicRoute.episodes}>
-						<Route
-							index
-							element={
-								<PrivateRoute>
-									<Categories />
-								</PrivateRoute>
-							}
-						/>
-						<Route
-							path=":id"
-							element={
-								<PrivateRoute>
-									<Article />
+									<ErrorBoundary>
+										<Article />
+									</ErrorBoundary>
 								</PrivateRoute>
 							}
 						/>

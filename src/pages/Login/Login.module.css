@@ -1,0 +1,17 @@
+.signinForm {
+	max-width: 500px;
+	margin: 40px auto;
+	display: flex;
+	flex-direction: column;
+
+	label {
+		margin-bottom: 25px;
+	}
+
+	input {
+		display: block;
+		width: 100%;
+		height: 32px;
+		font-size: 20px;
+	}
+}

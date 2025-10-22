@@ -1,5 +1,6 @@
-import { NavLink, useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthProvider';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/AuthProvider';
+import styles from './AuthStatus.module.css';
 
 export const AuthStatus = () => {
 	const auth = useAuth();
@@ -13,16 +14,16 @@ export const AuthStatus = () => {
 
 	if (auth.user === null) {
 		return (
-			<p className="auth-info">
+			<p className={styles.authInfo}>
 				<span>You are not logged in.</span>
 			</p>
 		);
 	}
 
 	return (
-		<p className="auth-info">
+		<p className={styles.authInfo}>
 			Welcome user {auth.user}
-			<button onClick={handleSignout} className="button">
+			<button onClick={handleSignout} className={styles.button}>
 				Sign out
 			</button>
 		</p>

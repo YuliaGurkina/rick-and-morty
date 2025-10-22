@@ -9,7 +9,7 @@ export const useAuth = () => {
 export const AuthProvider = ({ children }) => {
 	const [user, setUser] = useState(() => localStorage.getItem('user') || null);
 
-	const singin = (newUser, callback) => {
+	const signin = (newUser, callback) => {
 		setUser(newUser);
 		localStorage.setItem('user', newUser);
 		callback();
@@ -23,7 +23,7 @@ export const AuthProvider = ({ children }) => {
 
 	const value = {
 		user,
-		singin,
+		signin,
 		signout,
 	};
 
