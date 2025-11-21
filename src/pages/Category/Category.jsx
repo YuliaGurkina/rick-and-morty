@@ -53,14 +53,15 @@ export const Category = () => {
 		<>
 			<div className={styles.title}>{title}</div>
 			<div className={styles.itemsWrapper}>
-				{articles.map(({ id, image, name }, index) => {
+				{articles.map(({ id, ...rest }, index) => {
 					return (
 						<Suspense key={id} fallback={<h3>Loading...</h3>}>
 							<Card
 								key={id}
 								id={id}
-								image={image}
-								name={name}
+								{...rest}
+								// image={image}
+								// name={name}
 								refNode={
 									articles.length === index + 1 ? lastNodeRef : null
 								}

@@ -37,30 +37,28 @@ export const Login = () => {
 	};
 
 	return (
-		<ErrorBoundary>
-			<form onSubmit={handleSubmit} className={styles.signinForm}>
-				<label>
-					Username:
-					<input
-						type="text"
-						name="username"
-						placeholder="Username"
-						value={formData.username}
-						onChange={handleChange}
-					/>
-				</label>
-				<label>
-					Password:
-					<input
-						type="password"
-						name="password"
-						placeholder="Password"
-						value={formData.password}
-						onChange={handleChange}
-					/>
-				</label>
-				<button type="submit">Войти</button>
-			</form>
-		</ErrorBoundary>
+		<form onSubmit={handleSubmit} className={styles.signinForm}>
+			<label>
+				Username:
+				<input
+					type="text"
+					name="username"
+					placeholder="Username"
+					value={formData.username}
+					onChange={handleChange}
+				/>
+			</label>
+			<label>
+				Password:
+				<input
+					type="password"
+					name="password"
+					placeholder="Password"
+					value={formData.password}
+					onChange={handleChange}
+				/>
+			</label>
+			<button type="submit">Войти</button>
+		</form>
 	);
 };

@@ -47,36 +47,37 @@ const NotFound = lazy(() =>
 export const App = () => {
 	return (
 		<AuthProvider>
-			<Routes>
-				<Route element={<MainLayout />}>
-					<Route path="/" element={<Main />} />
-					<Route path={publicRoute.categories} element={<CategoriesLayout />}>
-						<Route index element={<Categories />} />
+			<ErrorBoundary>
+				<Routes>
+					<Route element={<MainLayout />}>
+						<Route path="/" element={<Main />} />
 						<Route
-							path=":category"
-							element={
-								<PrivateRoute>
-									<ErrorBoundary>
+							path={publicRoute.categories}
+							element={<CategoriesLayout />}
+						>
+							<Route index element={<Categories />} />
+							<Route
+								path=":category"
+								element={
+									<PrivateRoute>
 										<Category />
-									</ErrorBoundary>
-								</PrivateRoute>
-							}
-						/>
-						<Route
-							path=":category/:id"
-							element={
-								<PrivateRoute>
-									<ErrorBoundary>
+									</PrivateRoute>
+								}
+							/>
+							<Route
+								path=":category/:id"
+								element={
+									<PrivateRoute>
 										<Article />
-									</ErrorBoundary>
-								</PrivateRoute>
-							}
-						/>
+									</PrivateRoute>
+								}
+							/>
+						</Route>
+						<Route path={publicRoute.login} element={<Login />} />
+						<Route path="*" element={<NotFound />} />
 					</Route>
-					<Route path={publicRoute.login} element={<Login />} />
-					<Route path="*" element={<NotFound />} />
-				</Route>
-			</Routes>
+				</Routes>
+			</ErrorBoundary>
 		</AuthProvider>
 	);
 };
