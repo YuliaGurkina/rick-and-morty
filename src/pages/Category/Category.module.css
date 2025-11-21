@@ -1,0 +1,17 @@
+.itemsWrapper {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.title {
+	font-size: 36px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+.loading {
+	text-align: center;
+	font-size: 26px;
+	font-weight: bold;
+}

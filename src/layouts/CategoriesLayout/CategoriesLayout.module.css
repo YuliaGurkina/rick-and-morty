@@ -1,0 +1,23 @@
+.categoriesPage {
+	display: flex;
+}
+
+.categoriesMenu {
+	margin-right: 40px;
+	margin-left: 0;
+	padding-left: 0;
+	font-size: 22px;
+
+	li {
+		list-style: none;
+		margin-bottom: 10px;
+	}
+
+	.active {
+		color: #55bd00;
+	}
+}
+
+.categoriesContent {
+	font-size: 20px;
+}

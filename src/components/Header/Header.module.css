@@ -1,0 +1,22 @@
+.menu {
+	display: flex;
+	margin: 0 0 30px;
+	padding: 0;
+}
+
+.menu li {
+	list-style: none;
+}
+
+.menu li + li {
+	margin-left: 20px;
+}
+
+.menu a {
+	font-size: 20px;
+	color: #999999;
+}
+
+.menu .active {
+	color: #55bd00;
+}
